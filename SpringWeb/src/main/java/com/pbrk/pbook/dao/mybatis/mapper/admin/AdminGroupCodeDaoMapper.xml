@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pbrk.pbook.dao.admin.AdminGroupCodeDao">
+	
+	
+	<!-- 공통코드 목록 조회(view) -->
+	<select id="getAdminCodeViewList" resultType="com.pbrk.pbook.entity.CodeView">
+		SELECT group_cd,
+			   code_cd,
+		  	   code_nm,
+			   code_del,
+			   reg_no,
+			   reg_date,
+			   mod_no,
+			   mod_date,
+			   group_nm,
+	  	 	   code_del_nm,
+		 	   reg_nm,
+		       mod_nm
+		FROM code_view
+		WHERE 1=1
+		<if test="groupCd != null and groupCd != '' and groupCd != 0">
+		AND group_cd = #{groupCd}
+		</if> 
+		ORDER BY group_cd, code_cd
+	</select>
+		
+	<!-- 그룹코드 목록 조회 -->
+	<select id="getAdminGroupCodeList" resultType="com.pbrk.pbook.entity.GroupCode">
+		SELECT group_cd,
+		 	   group_cd_nm,
+		 	   group_del,
+		 	   reg_no,
+		 	   reg_date,
+		 	   mod_no,
+		 	   mod_date
+		FROM group_code
+		ORDER BY group_cd
+		LIMIT #{offset}, #{size}
+	</select>
+	
+	<!-- 공통코드 목록 조회(view) -->
+	<select id="getAdminGroupCodeViewList" resultType="com.pbrk.pbook.entity.GroupCodeView">
+		SELECT group_cd,
+		 	   group_cd_nm,
+		 	   group_del,
+		 	   reg_no,
+		 	   reg_date,
+		 	   mod_no,
+		 	   mod_date,
+		 	   group_del_nm,
+		 	   reg_nm,
+		 	   mod_nm
+		FROM group_code_view
+		ORDER BY group_cd
+		LIMIT #{offset}, #{size}
+	</select>
+	
+	<!-- 그룹코드 게시물수 조회 -->
+	<select id="getAdminGroupCodeCount" resultType="int">
+		SELECT COUNT(*) AS count FROM group_code
+	</select>
+	
+	
+	<!-- 그룹코드 등록 중복체크 -->
+	<select id="getAdminGroupCodeRegCheck" resultType="int">
+		SELECT COUNT(*) AS count 
+		FROM group_code
+		WHERE group_cd = #{groupCd}
+	</select>
+	
+	
+	<!-- 그룹코드 수정 중복체크 -->
+	<select id="getAdminGroupCodeEditCheck" resultType="int">
+		SELECT COUNT(*) AS count 
+		FROM group_code
+		WHERE group_cd = #{groupCd}
+		AND group_cd not IN(#{groupCd});
+	</select>
+	
+	<!-- 그룹코드 상세정보 조회 -->
+	<select id="getAdminGroupCodeDetail" resultType="com.pbrk.pbook.entity.GroupCode">
+		SELECT group_cd,
+		 	   group_cd_nm,
+		 	   group_del,
+		 	   reg_no,
+		 	   reg_date,
+		 	   mod_no,
+		 	   mod_date
+		FROM group_code
+		WHERE group_cd = #{group_cd}
+	</select>
+	
+	<!-- 그룹코드 상세정보 조회(view) -->
+	<select id="getAdminGroupCodeViewDetail" resultType="com.pbrk.pbook.entity.GroupCodeView">
+		SELECT group_cd,
+		 	   group_cd_nm,
+		 	   group_del,
+		 	   reg_no,
+		 	   reg_date,
+		 	   mod_no,
+		 	   mod_date,
+		 	   group_del_nm,
+		 	   reg_nm,
+		 	   mod_nm
+		FROM group_code_view
+		WHERE group_cd = #{group_cd}
+	</select>
+		
+	<!-- 그룹코드 등록 -->
+	<insert id="adminGroupCodeInsert" parameterType="com.pbrk.pbook.entity.GroupCode">
+		INSERT INTO group_code(group_cd,
+						 group_cd_nm,
+						 reg_no,
+						 reg_date
+		)
+		VALUES(#{group_cd},
+			   #{group_cd_nm},
+   			   #{reg_no},
+   			   NOW()
+		)
+	</insert>
+	
+	<!-- 그룹코드 수정 -->
+	<update id="adminGroupCodeUpdate" parameterType="com.pbrk.pbook.entity.GroupCode">
+		UPDATE group_code
+		SET
+			group_cd_nm  = #{group_cd_nm},
+			group_del    = #{group_del},
+			mod_no       = #{mod_no}		   
+		WHERE group_cd = #{group_cd}
+	</update>
+	
+	<!-- 그룹코드 삭제 -->
+	<update id="adminGroupCodeDelete" parameterType="com.pbrk.pbook.entity.GroupCode">
+		UPDATE group_code
+		SET
+			group_del = TRUE,
+			mod_no    = #{mod_no}		   
+		WHERE group_cd = #{group_cd}
+	</update>
+	
+	<!-- 회원번호 조회 -->
+	<select id="getAdminMemberNo" resultType="int">
+		SELECT member_no 
+		FROM member
+		WHERE member_id = #{memberId}
+	</select>
+	
+</mapper>

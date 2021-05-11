@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Hello, world!</title>
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="../css/dist/bootstrap.min.css">
+
+        <link href="../css/index.css" rel="stylesheet">
+    </head>
+
+    <body>
+        
+        <header class="bg-primary">            
+            <div class="container">
+
+                <!-- nav1 -->
+                <nav class="navbar navbar-light">
+                    <a class="navbar-brand text-white mx-0">PBOOKS</a>
+                    <form class="form-inline">
+                        <button type="button" class="btn btn-light mx-1 my-2 my-sm-0">회원가입</button>
+                        <button type="button" class="btn btn-outline-light mx-1 my-2 my-sm-0">로그인</button>
+                    </form>
+                </nav>
+
+                <!-- nav2 -->
+                <div class="nav-scroller bg-primary shadow-sm">
+                    <nav class="nav nav-underline justify-content-center">
+                        <a class="text-white nav-link active" href="#">홈</a>                
+                        <a class="text-white nav-link" href="#">도서</a>
+                        <a class="text-white nav-link" href="#">한줄평</a>
+                        <a class="text-white nav-link" href="#">공지</a>
+                    </nav>
+                </div>
+           
+            </div>
+            <!-- /.container -->
+        </header>
+          
+        <main role="main">
+            
+            <div class="container">
+                
+                <form>
+                    <div class="form-group">
+                        <div class="container">
+                            <div class="row justify-content-md-end">
+                                <div class="col col-lg-2 px-0 py-2">
+                                    <select id="inputState" class="form-control">
+                                        <option selected>Choose...</option>
+                                        <option>...</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-auto px-0 py-2">
+                                    <input type="text" class="form-control" id="inputZip">
+                                </div>
+                                <div class="col col-lg-1 px-0 py-2">
+                                    <button type="submit" class="btn btn-primary">검색</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th scope="col">번호</th>
+                            <th scope="col">제목</th>
+                            <th scope="col">파일</th>
+                            <th scope="col">작성자</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>Jacob</td>
+                            <td>Thornton</td>
+                            <td>@fat</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td>Larry the Bird</td>
+                            <td>@twitter</td>
+                            <td>@twitter</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <!-- pageing -->
+                <nav aria-label="Page navigation example py-4">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">이전</a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link" href="#">4</a></li>
+                        <li class="page-item"><a class="page-link" href="#">5</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">다음</a>
+                        </li>
+                    </ul>
+                </nav>
+
+            </div>
+    
+        </main>
+          
+        <footer class="footer mt-auto py-3">
+            <div class="container">
+                <span class="text-white">PBOOKS 2021</span>
+            </div>
+        </footer>
+
+        <script src="../js/jquery-3.5.1.slim.min.js"></script>
+        <script src="../js/dist/bootstrap.bundle.min.js"></script>
+
+        <script>
+            $('.carousel').carousel({
+                interval: 5000
+            })
+        </script>
+    </body>
+</html>

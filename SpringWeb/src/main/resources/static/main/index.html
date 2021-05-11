@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Hello, world!</title>
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="../css/dist/bootstrap.min.css">8
+
+        <link href="../css/index.css" rel="stylesheet">
+    </head>
+
+    <body>
+        
+        <header class="bg-primary">            
+            <div class="container">
+
+                <!-- nav1 -->
+                <nav class="navbar navbar-light">
+                    <a class="navbar-brand text-white mx-0">PBOOKS</a>
+                    <form class="form-inline">
+                        <button type="button" class="btn btn-light mx-1 my-2 my-sm-0">회원가입</button>
+                        <button type="button" class="btn btn-outline-light mx-1 my-2 my-sm-0">로그인</button>
+                    </form>
+                </nav>
+
+                <!-- nav2 -->
+                <div class="nav-scroller bg-primary shadow-sm">
+                    <nav class="nav nav-underline justify-content-center">
+                        <a class="text-white nav-link active" href="#">홈</a>                
+                        <a class="text-white nav-link" href="#">도서</a>
+                        <a class="text-white nav-link" href="#">한줄평</a>
+                        <a class="text-white nav-link" href="#">공지</a>
+                    </nav>
+                </div>
+           
+            </div>
+            <!-- /.container -->
+        </header>
+          
+        <main role="main">
+            
+            <div class="container">
+        
+                <div id="carouselExampleCaptions" class="carousel slide my-4" data-ride="carousel">
+                
+                    <div class="rounded carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="../images/slide06.jpg" class="d-block w-100" alt="...">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>도서</h5>
+                                <p>관심있는 도서를 찾아서 리뷰를 작성해주세요.</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="../images/slide07.jpg" class="d-block w-100" alt="...">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>한 줄 글</h5>
+                                <p>자신에게 글을 남기고, 매일 확인하세요.</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="../images/slide08.jpg" class="d-block w-100" alt="...">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>공지</h5>
+                                <p>업데이트 사항 및 사이트에 대해 확인하세요.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">이전</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">다음</span>
+                    </a>
+                </div>
+                <!-- /.slide -->
+
+                <div class="alert alert-primary my-4" role="alert">
+                    인기도서 <a href="#" class="alert-link">바로가기</a>
+                </div>
+
+                <div class="card-deck">
+                    <div class="card">
+                        <img src="../images/book/book_01.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">아몬드 (양장 특별 한정판)</h5>
+                            <p class="card-text">제10회 창비청소년문학상을 수상하며 등단한 손원평 작가의 첫 장편소설 </p>
+                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="../images/book/book_02.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">나미야 잡화점의 기적</h5>
+                            <p class="card-text">2012년 12월 19일 국내 번역 출간된 이래 6년 연속 베스트셀러 순위 상위권을 차지하며 서점가에서 '21세기 가장 경이로운 베스트셀러'라고 불리는 소설.</p>
+                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="../images/book/book_03.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">여행의 이유</h5>
+                            <p class="card-text">“이 책을 쓰는 데 내 모든 여행의 경험이 필요했다”</p>
+                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.인기도서 -->
+
+                <div class="alert alert-primary my-4" role="alert">
+                    한줄평 <a href="#" class="alert-link">바로가기</a>
+                </div>
+
+                <div class="accordion my-4" id="accordionExample">
+                    <div class="card">
+                        <div class="card-header" id="headingOne">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            차트의기술
+                            </button>
+                        </h2>
+                        </div>
+                    
+                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                            <div class="card-body">
+                                초심자 단계부터 잘 설명되어 있는 책입니다.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingTwo">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                하워드 막스 투자와 마켓 사이클의 법칙
+                            </button>
+                        </h2>
+                        </div>
+                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                        <div class="card-body">
+                            최근 읽은 경제 관쳔 책중에서 가장 흥미롭고 재미있게 읽은 책입니다.
+                        </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingThree">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                보면 아는 블록체인
+                            </button>
+                        </h2>
+                        </div>
+                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                        <div class="card-body">
+                            초심자 혹은 대중들도 기술을 알기 쉽게 되어 있어서 재미있게 읽었습니다. 블록체인에 흥미가 있다면 꼭 권하고 싶은 책입니다.
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.도서리뷰 -->
+            </div>
+    
+        </main>
+          
+        <footer class="footer mt-auto py-3">
+            <div class="container">
+                <span class="text-white">PBOOKS 2021</span>
+            </div>
+        </footer>
+
+        <script src="../js/jquery-3.5.1.slim.min.js"></script>
+        <script src="../js/dist/bootstrap.bundle.min.js"></script>
+
+        <script>
+            $('.carousel').carousel({
+                interval: 5000
+            })
+        </script>
+    </body>
+</html>

@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pbrk.pbook.dao.web.BookDao">
+	
+	<!-- 그룹코드 목록 조회(view) -->
+	<select id="getGroupCodeViewList" resultType="com.pbrk.pbook.entity.GroupCodeView">
+		SELECT group_cd,
+		 	   group_cd_nm,
+		 	   group_del,
+		 	   reg_no,
+		 	   reg_date,
+		 	   mod_no,
+		 	   mod_date,
+		 	   group_del_nm,
+		 	   reg_nm,
+		 	   mod_nm
+		FROM group_code_view
+		ORDER BY group_cd
+		LIMIT #{offset}, #{size}
+	</select>
+	
+	<!-- 공통코드 목록 조회(view) -->
+	<select id="getCodeViewList" resultType="com.pbrk.pbook.entity.CodeView">
+		SELECT group_cd,
+			   code_cd,
+		  	   code_nm,
+			   code_del,
+			   reg_no,
+			   reg_date,
+			   mod_no,
+			   mod_date,
+			   group_nm,
+	  	 	   code_del_nm,
+		 	   reg_nm,
+		       mod_nm
+		FROM code_view
+		WHERE group_cd = #{groupCd}
+		ORDER BY group_cd, code_cd
+	</select>
+	
+	<!-- 도서목록 조회(view) -->
+	<select id="getBookViewList" resultType="com.pbrk.pbook.entity.BookView">
+		SELECT book_no,
+			   book_title,
+			   book_desc,
+			   book_author,
+			   book_author_desc,
+			   book_publisher,
+			   book_pub_date,
+			   book_img_url,
+			   book_pub,
+			   group_cd, 		 
+			   code_cd, 		 
+			   reg_no,
+			   reg_date,
+			   mod_no,
+			   mod_date,
+			   group_nm,
+			   code_nm,
+		 	   reg_nm,
+		 	   mod_nm,
+		   	   book_pub_nm
+		FROM book_view
+		WHERE 1=1
+		<if test="codeCd != null and codeCd != '' and codeCd != 0">
+		AND code_cd = #{codeCd}
+		</if> 
+		<if test="query != null and query != ''">
+		AND ${field} LIKE '%${query}%'
+		</if>
+		ORDER BY reg_date DESC
+		LIMIT #{offset}, #{size}
+	</select>
+	
+	<!-- 도서 게시물수 조회 -->
+	<select id="getBookCount" resultType="int">
+		SELECT COUNT(*) AS count 
+		FROM book
+		<if test="codeCd != null and codeCd != ''">
+		WHERE code_cd = #{codeCd}
+		</if> 
+	</select>
+		
+	<!-- 도서 상세정보 조회(view) -->
+	<select id="getBookViewDetail" resultType="com.pbrk.pbook.entity.BookView">
+		SELECT book_no,
+			   book_title,
+			   book_desc,
+			   book_author,
+			   book_author_desc,
+			   book_publisher,
+			   book_pub_date,
+			   book_img_url,
+			   book_pub,
+			   group_cd, 		 
+			   code_cd, 		 
+			   reg_no,
+			   reg_date,
+			   mod_no,
+			   mod_date,
+			   group_nm,
+			   code_nm,
+		 	   reg_nm,
+		 	   mod_nm,
+		   	   book_pub_nm
+		FROM book_view
+		WHERE book_no = #{no}
+	</select>
+		
+	<!-- 도서리뷰 목록 조회(view) -->
+	<select id="getBookReviewViewListMaxLine" resultType="com.pbrk.pbook.entity.BookReviewView">
+		SELECT book_no,
+			   book_score,
+			   book_review_content,
+			   book_review_pub,
+			   book_review_del,
+			   reg_no,
+			   reg_date,
+			   mod_no,
+			   mod_date,
+			   book_pub_nm,
+			   book_del_nm,
+			   reg_nm,
+			   mod_nm
+		FROM book_review_view
+		WHERE book_no = #{no}
+		ORDER BY reg_date DESC
+		LIMIT 0, #{maxLine}
+	</select>
+		
+	<!-- 도서리뷰 목록 조회(view) -->
+	<select id="getBookReviewViewList" resultType="com.pbrk.pbook.entity.BookReviewView">
+		SELECT book_no,
+			   book_score,
+			   book_review_content,
+			   book_review_pub,
+			   book_review_del,
+			   reg_no,
+			   reg_date,
+			   mod_no,
+			   mod_date,
+			   book_pub_nm,
+			   book_del_nm,
+			   reg_nm,
+			   mod_nm
+		FROM book_review_view
+		WHERE book_no = #{no}
+		ORDER BY reg_date DESC
+		LIMIT #{offset}, #{size}
+	</select>
+	
+	<!-- 도서리뷰 게시물수 조회 -->
+	<select id="getBookReviewCount" resultType="int">
+		SELECT COUNT(*) AS count 
+		FROM book_review
+		WHERE book_no = #{no}
+	</select>
+		
+	<!-- 리뷰 등록 -->
+	<insert id="getBookReviewInsert" parameterType="com.pbrk.pbook.entity.BookReview">
+		INSERT INTO book_review(book_no,
+						book_review_content,
+						reg_no,
+						reg_date
+		)
+		VALUES(#{book_no},
+			   #{book_review_content},
+			   #{reg_no},
+   			   NOW()
+		)
+	</insert>	
+
+</mapper>

@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pbrk.pbook.dao.admin.AdminNoticeDao">
+
+	<!-- <resultMap type="com.pbrk.pbook.entity.NoticeView" id="noticeViewMap">
+		<result property="memberName" column="member_name" />
+	</resultMap> -->
+	
+	<!-- 공통코드 목록 조회(view) -->
+	<select id="getAdminCodeViewList" resultType="com.pbrk.pbook.entity.CodeView">
+		SELECT group_cd,
+			   code_cd,
+		  	   code_nm,
+			   code_del,
+			   reg_no,
+			   reg_date,
+			   mod_no,
+			   mod_date,
+			   group_nm,
+	  	 	   code_del_nm,
+		 	   reg_nm,
+		       mod_nm
+		FROM code_view
+		WHERE group_cd = #{groupCd}
+		ORDER BY group_cd, code_cd
+	</select>
+	
+	<!-- 공지사항 목록 조회 -->
+	<select id="getAdminNoticeList" resultType="com.pbrk.pbook.entity.Notice">
+		SELECT notice_no,
+			   notice_title,
+			   notice_content,
+			   notice_hit,
+			   notice_pub,
+			   notice_files,
+			   group_cd,
+			   code_cd,
+			   reg_no,		 
+			   reg_date,
+			   mod_no,		 
+			   mod_date
+		FROM notice
+		<trim prefix="WHERE" prefixOverrides="AND | OR ">
+		<if test="query != null and query != ''">
+			${field} LIKE '%${query}%'
+		</if>
+		</trim>
+		ORDER BY reg_date DESC
+		LIMIT #{offset}, #{size}
+	</select>	
+
+	<!-- 공지사항 목록 조회(view) -->
+	<select id="getAdminNoticeViewList" resultType="com.pbrk.pbook.entity.NoticeView">
+		SELECT notice_no,
+			   notice_title,
+			   notice_content,
+			   notice_hit,
+			   notice_pub,
+			   notice_files,
+			   group_cd,
+			   code_cd,
+			   reg_no,		 
+			   reg_date,
+			   mod_no,		 
+			   mod_date,
+			   group_nm,
+			   code_nm,
+			   reg_nm,
+			   mod_nm
+		FROM notice_view 
+		WHERE 1=1
+		<if test="codeCd != null and codeCd != '' and codeCd != 0">
+		AND code_cd = #{codeCd}
+		</if> 
+		<if test="query != null and query != ''">
+		AND ${field} LIKE '%${query}%'
+		</if>
+		ORDER BY reg_date DESC
+		LIMIT #{offset}, #{size}
+	</select>
+	
+	<!-- 공지사항 게시물 수 조회 -->
+	<select id="getAdminNoticeCount" resultType="int">
+		SELECT count(notice_no) count FROM notice 
+		WHERE 1=1
+		<if test="codeCd != null and codeCd != '' and codeCd != 0">
+		AND code_cd = #{codeCd}
+		</if> 
+		<if test="query != null and query != ''">
+		AND ${field} LIKE '%${query}%'
+		</if>
+	</select>	
+	
+	<!-- 공지사항 상세정보 조회 -->
+	<select id="getAdminNoticeDetail" resultType="com.pbrk.pbook.entity.Notice">
+		SELECT notice_no,
+			   notice_title,
+			   notice_content,
+			   notice_hit,
+			   notice_pub,
+			   notice_files,
+			   group_cd,
+			   code_cd,
+			   reg_no,		 
+			   reg_date,
+			   mod_no,		 
+			   mod_date
+		FROM notice
+		WHERE notice_no=#{notice_no}
+	</select>
+	
+	<!-- 공지사항 상세정보 조회(view) -->
+	<select id="getAdminNoticeViewDetail" resultType="com.pbrk.pbook.entity.NoticeView">
+		SELECT notice_no,
+			   notice_title,
+			   notice_content,
+			   notice_hit,
+			   notice_pub,
+			   notice_files,
+			   group_cd,
+			   code_cd,
+			   reg_no,		 
+			   reg_date,
+			   mod_no,		 
+			   mod_date,
+			   group_nm,
+			   code_nm,
+			   reg_nm,
+			   mod_nm
+		FROM notice_view
+		WHERE notice_no=#{notice_no}
+	</select>
+	
+	<!-- 공지사항 등록 -->
+	<insert id="adminNoticeInsert" parameterType="com.pbrk.pbook.entity.Notice">
+		INSERT INTO Notice(notice_title,
+						   notice_content,
+						   notice_files,
+   						   group_cd,
+   						   code_cd,
+   						   reg_no,   						   
+   						   reg_date
+		)
+		VALUES(#{notice_title},
+			   #{notice_content},
+			   #{notice_files},
+			   #{group_cd},
+   			   #{code_cd},
+   			   #{reg_no},
+   			   NOW()
+		)
+	</insert>
+	
+	<!-- 공지사항 수정 -->
+	<update id="adminNoticeUpdate" parameterType="com.pbrk.pbook.entity.Notice">
+		UPDATE Notice
+		SET
+			notice_title   = #{notice_title},
+			notice_content = #{notice_content} ,
+			notice_pub     = #{notice_pub},
+			notice_files   = #{notice_files},
+			group_cd       = #{group_cd},
+			code_cd        = #{code_cd},
+			mod_no         = #{mod_no}	
+		WHERE notice_no = #{notice_no}
+	</update>
+	
+	<!-- 회원번호 조회 -->
+	<select id="getAdminMemberNo" resultType="int">
+		SELECT member_no 
+		FROM member
+		WHERE member_id = #{memberId}
+	</select>
+	
+</mapper>

@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Hello, world!</title>
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="../css/dist/bootstrap.min.css">
+
+        <link href="../css/index.css" rel="stylesheet">
+    </head>
+
+    <body>
+        
+        <header class="bg-primary">            
+            <div class="container">
+
+                <!-- nav1 -->
+                <nav class="navbar navbar-light">
+                    <a class="navbar-brand text-white mx-0">PBOOKS</a>
+                    <form class="form-inline">
+                        <button type="button" class="btn btn-light mx-1 my-2 my-sm-0">회원가입</button>
+                        <button type="button" class="btn btn-outline-light mx-1 my-2 my-sm-0">로그인</button>
+                    </form>
+                </nav>
+
+                <!-- nav2 -->
+                <div class="nav-scroller bg-primary shadow-sm">
+                    <nav class="nav nav-underline justify-content-center">
+                        <a class="text-white nav-link active" href="#">홈</a>                
+                        <a class="text-white nav-link" href="#">도서</a>
+                        <a class="text-white nav-link" href="#">한줄평</a>
+                        <a class="text-white nav-link" href="#">공지</a>
+                    </nav>
+                </div>
+           
+            </div>
+            <!-- /.container -->
+        </header>
+          
+        <main role="main">
+            
+            <div class="container">
+                <div class="jumbotron">
+                    <h1 class="display-4">아몬드 (양장 특별 한정판)</h1>
+                    <p class="lead">창비/현대문학/2017</p>
+                    <hr class="my-4">
+                    <p>더 많은 리뷰를 보고 싶으시면 버튼을 클릭하세요.</p>
+                    <a class="btn btn-primary btn-lg" href="#" role="button">리뷰</a>
+                </div>
+
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">도서</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">저자</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">리뷰</a>
+                    </li>
+                </ul>
+                
+                <div class="tab-content py-4" id="myTabContent">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">도서 소개 내용 입니다.</div>
+                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">저자 소개 내용 입니다.</div>
+                    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                        <div class="list-group">
+                            <a href="#" class="list-group-item list-group-item-action">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1">아몬드 (양장 특별 한정판)</h5>
+                                    <small>2017-01-02</small>
+                                </div>
+                                <p class="mb-1">완전 재밌습니다. 한번더 추천합니다.</p>
+                                <small>pbrk** 독자님께서 작성해주신 리뷰 입니다.</small>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1">아몬드 (양장 특별 한정판)</h5>
+                                    <small>2017-01-02</small>
+                                </div>
+                                <p class="mb-1">완전 재밌습니다. 한번더 추천합니다.</p>
+                                <small>pbrk** 독자님께서 작성해주신 리뷰 입니다.</small>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1">아몬드 (양장 특별 한정판)</h5>
+                                    <small>2017-01-02</small>
+                                </div>
+                                <p class="mb-1">완전 재밌습니다. 한번더 추천합니다.</p>
+                                <small>pbrk** 독자님께서 작성해주신 리뷰 입니다.</small>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>         
+
+        </main>
+          
+        <footer class="footer mt-auto py-3">
+            <div class="container">
+                <span class="text-white">PBOOKS 2021</span>
+            </div>
+        </footer>
+
+        <script src="../js/jquery-3.5.1.slim.min.js"></script>
+        <script src="../js/dist/bootstrap.bundle.min.js"></script>
+
+        <script>
+            $('.carousel').carousel({
+                interval: 5000
+            })
+        </script>
+    </body>
+</html>

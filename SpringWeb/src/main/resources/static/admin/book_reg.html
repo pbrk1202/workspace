@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>PBOOK 관리자</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/css/dist/bootstrap.min.css">
+
+    <!-- 관리자 -->
+    <link href="/css/admin/dashboard.css" rel="stylesheet">
+
+</head>
+<body>
+    
+    <!-- header -->
+    <header>
+    
+        <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+	        <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#">PBOOKS</a>
+	        <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+	            <span class="navbar-toggler-icon"></span>
+	        </button>
+	        <ul class="navbar-nav px-3">
+	            <li class="nav-item text-nowrap">
+	                <a class="nav-link" href="/login">로그 아웃</a>
+	            </li>
+	        </ul>
+	    </nav>
+           
+    </header>
+		
+    <!-- menu -->
+    <div class="container-fluid">
+        <div class="row">	
+        
+			<nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+                <div class="sidebar-sticky pt-3">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <span class="nav-link active">    
+                                CODE
+                            </span>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/admin/board/groupCode/list">
+                                <span data-feather="file"></span>
+                                그룹코드
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/admin/board/code/list">
+                                <span data-feather="shopping-cart"></span>
+                                공통코드
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/admin/board/member/list">
+                                <span data-feather="shopping-cart"></span>
+                                회원관리
+                            </a>
+                        </li>
+                    </ul>                    
+                    <ul class="nav flex-column mb-2">
+                        <li class="nav-item">
+                            <span class="nav-link active">
+                                MENU
+                            </span>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/admin/board/book/list">
+                                <span data-feather="file-text"></span>
+                                도서관리
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/admin/board/singleLine/list">
+                                <span data-feather="file-text"></span>
+                                한줄글
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/admin/board/notice/list">
+                                <span data-feather="file-text"></span>
+                                공지사항
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/admin/board/faq/list">
+                                <span data-feather="file-text"></span>
+                                FAQ
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            
+            <!-- main -->
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+
+                <!-- title -->
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2">도서 등록</h1>
+                </div>
+
+                <form>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="inputTitle">도서 제목</label>
+                            <input type="text" class="form-control" id="inputTitle">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="inputPublisher">출판사</label>
+                            <input type="text" class="form-control" id="inputPublisher">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="inputPubDate">발행년도</label>
+                            <input type="text" class="form-control" id="inputPubDate">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label for="inputImg">도서 이미지 첨부</label>
+                            <input type="file" class="form-control-file" id="inputImg">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <div class="form-group">
+                                <label for="bookSelect">도서 타입</label>
+                                <select class="form-control" id="bookSelect">
+                                    <option>1</option>
+                                    <option>2</option>
+                                </select>
+                              </div>
+                        </div>
+                    </div>
+                   
+
+                    <div class="form-group">
+                        <label for="inputDesc">도서 소개</label>
+                        <textarea class="form-control" id="inputDesc" rows="3"></textarea>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label for="inputTitle">저자</label>
+                            <input type="text" class="form-control" id="inputTitle">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputDesc">저자 소개</label>
+                        <textarea class="form-control" id="inputDesc" rows="3"></textarea>
+                    </div>
+
+                    <button type="button" class="btn btn-primary  btn-lg">목록</button>
+                    <button type="button" class="btn btn-secondary btn-lg">등록</button>
+                    <button type="button" class="btn btn-secondary btn-lg">수정</button>
+                    <button type="button" class="btn btn-secondary btn-lg">삭제</button>
+                </form>
+
+            </main>
+
+        </div>
+
+    </div>
+
+    <script src="/js/jquery-3.5.1.slim.min.js"></script>
+    <script src="/js/dist/bootstrap.bundle.min.js"></script>
+  
+    </body>
+</html>

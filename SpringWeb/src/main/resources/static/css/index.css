@@ -1,0 +1,179 @@
+/* Custom page CSS
+-------------------------------------------------- */
+/* Not required for template or sticky footer method. */
+
+
+
+/* header */
+.nav-scroller {
+  position: relative;
+  z-index: 2;
+  height: 2.75rem;
+  overflow-y: hidden;
+}
+
+.nav-scroller .nav {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  padding-bottom: 1rem;
+  margin-top: -1px;
+  overflow-x: auto;
+  text-align: center;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+}
+
+.nav-scroller .nav-link {
+  padding-top: .75rem;
+  padding-bottom: .75rem;
+  font-size: .875rem;
+}
+
+.nav-scroller .nav-link:hover {
+	font-weight: bold;	
+}
+
+.fm-10 {
+	 margin-left: -10%;
+}
+
+/* main */
+main > .container {
+  padding: 25px 15px 0;
+}
+
+
+
+
+
+
+
+/* footer */
+.footer {
+  background-color: #343a40;
+}
+
+.footer > .container {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+code {
+  font-size: 80%;
+}
+
+.breadcrumb {
+	background-color: #cce5ff
+}
+
+.footer-menu-icon {
+	list-style: none;
+}
+
+/* mobile-footer */
+#footer-menu-mob {
+	display: none;
+}
+
+
+/* web-footer */
+.blog-footer {
+  padding: 2.5rem 0;
+  color: #fff;
+  text-align: center;
+  background-color: #343a40;
+  /* border-top: .05rem solid #e5e5e5; */
+}
+.blog-footer p:last-child {
+  margin-bottom: 0;
+}
+
+
+
+@media screen and (max-width: 768px) { 
+	
+	/* mobile-footer */
+	#footer-menu-mob {
+		display: inline;
+	}
+	
+	/* web-footer */
+	.blog-footer {
+		display: none;
+	}
+	
+	/*
+		web-table
+		 singleLine : 한줄글
+	 	 notice : 공지
+	*/
+	.table-mob-hidden {
+		display: none;
+	} 
+	
+
+	.slide-text-2,
+	.slide-text-3 {
+	    display: block;
+	    position: relative;
+	}
+	.slide-text-2:after {
+	    content:"";
+	    position: absolute;
+	    top: 150%;
+	    /* left: 0; */
+	    width: 50px;
+	    height: 2px;
+	    background: #007bff;
+	    transform: translateX(-85%);
+	}
+	
+	.slide-text-3:after {
+	    content:"";
+	    position: absolute;
+	    top: 150%;
+	    /* left: 0; */
+	    width: 90px;
+	    height: 2px;
+	    background: #007bff;
+	    transform: translateX(-85%);
+	}
+	
+	.dropdown-menu {
+		left: -45px;
+	}
+}
+
+
+@media screen and (max-width: 575px) { 
+	/* main */
+	#carouselExampleCaptions {
+		
+	}	
+	.d-none {
+		display: inline !important;
+	}
+	
+	.carousel-caption{
+		position : inherit;
+		color: #212529;
+		left: 0;
+		right: 0;
+		bottom: 0;
+	}
+
+	.carousel-control-next-icon {
+		display: none;
+	}
+	
+	.carousel-control-prev-icon {
+		display: none;
+	}
+	
+	/* flex -> block : 100% */
+	#book-detail-img-mob {
+		display: block;
+	}
+}

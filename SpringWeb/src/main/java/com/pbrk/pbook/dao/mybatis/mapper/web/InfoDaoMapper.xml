@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pbrk.pbook.dao.web.InfoDao">
+	
+	<!-- 공통코드 목록 조회(view) -->
+	<select id="getCodeViewList" resultType="com.pbrk.pbook.entity.CodeView">
+		SELECT group_cd,
+			   code_cd,
+		  	   code_nm,
+			   code_del,
+			   reg_no,
+			   reg_date,
+			   mod_no,
+			   mod_date,
+			   group_nm,
+	  	 	   code_del_nm,
+		 	   reg_nm,
+		       mod_nm
+		FROM code_view
+		WHERE group_cd = #{groupCd}
+		ORDER BY group_cd, code_cd
+	</select>
+		
+	<!-- 회원 상세정보 조회 -->
+	<select id="getInfoMemberViewDetail" resultType="com.pbrk.pbook.entity.MemberView">
+		SELECT member_no,
+			   member_id,
+			   member_pwd,
+			   member_nm,
+			   member_gender,
+			   member_bth,
+			   member_phone,
+			   member_email,
+			   member_del,		
+			   group_cd,
+			   code_cd,		 
+			   reg_no,		 
+			   reg_date,
+			   mod_no,		 
+			   mod_date,
+			   member_del_nm,
+			   group_nm,
+			   code_nm,
+			   reg_nm,
+			   mod_nm
+		FROM member_view
+		WHERE member_id = #{memberId}
+	</select>
+		
+	<!-- 회원번호 조회 -->
+	<select id="getMemberNo" resultType="int">
+		SELECT member_no 
+		FROM member
+		WHERE member_id = #{memberId}
+	</select>
+	
+	<!-- 회원 수정 -->
+	<update id="getInfoMemberUpdate" parameterType="com.pbrk.pbook.entity.Member">
+		UPDATE member
+		SET
+			member_pwd    = #{member_pwd},
+			member_nm     = #{member_nm},
+		    member_gender = #{member_gender},
+		    member_bth    = #{member_bth},
+		    member_phone  = #{member_phone},
+		    member_email  = #{member_email},
+		    group_cd      = #{group_cd},
+		    code_cd       = #{code_cd},
+		    mod_no        = #{mod_no}
+		WHERE member_no = #{member_no}
+	</update>
+		
+	<!-- 도서리뷰 목록 조회(view) -->
+	<select id="getBookReviewViewList" resultType="com.pbrk.pbook.entity.BookReviewView2">
+		SELECT book_no,
+		       book_review_no,
+			   book_score,
+			   book_review_content,
+			   book_review_pub,
+			   book_review_del,
+			   reg_no,
+			   reg_date,
+			   mod_no,
+			   mod_date,
+			   book_title,
+			   book_pub_nm,
+			   book_del_nm,
+			   reg_nm,
+			   mod_nm
+		FROM book_review_view2
+		WHERE reg_no = #{memberNo}
+		ORDER BY reg_date DESC
+		LIMIT #{offset}, #{size}
+	</select>
+	
+	<!-- 도서리뷰 게시물수 조회 -->
+	<select id="getBookReviewCount" resultType="int">
+		SELECT COUNT(*) AS count 
+		FROM book_review
+		WHERE reg_no = #{memberNo}
+	</select>
+	
+	<!-- 도서 작성자별 리뷰 상세정보 조회(view) -->
+	<select id="getInfoBookReviewViewDetail" resultType="com.pbrk.pbook.entity.BookReviewView2">
+		SELECT book_no,
+			   book_review_no,
+			   book_score,
+			   book_review_content,
+			   book_review_pub,
+			   book_review_del,
+			   reg_no,
+			   reg_date,
+			   mod_no,
+			   mod_date,
+			   book_title,
+			   book_pub_nm,
+			   book_del_nm,
+			   reg_nm,
+			   mod_nm
+		FROM book_review_view2
+		WHERE book_review_no = #{bookReviewNo}
+	</select>
+	
+	<!-- 도서 작성자별 리뷰 수정 -->
+	<update id="getInfoBookReviewUpdate" parameterType="com.pbrk.pbook.entity.BookReview">
+		UPDATE book_review
+		SET
+		    book_score          = #{book_score},
+			book_review_content = #{book_review_content},
+			book_review_pub     = #{book_review_pub},
+			book_review_del     = #{book_review_del},
+			mod_no              = #{mod_no}
+		WHERE book_review_no = #{book_review_no}
+	</update>
+	
+	
+	<!-- 한줄글 목록 조회(view) -->
+	<select id="getInfoSingleLineViewList" resultType="com.pbrk.pbook.entity.SingleLineView">
+		SELECT sngl_line_no,
+			   sngl_line_title,
+			   sngl_line_content,
+			   sngl_line_pub,
+			   group_cd,
+			   code_cd,
+			   reg_no,
+			   reg_date,
+		   	   mod_no,		
+			   mod_date,
+			   sngl_line_pub_nm,
+			   group_nm,
+			   code_nm,
+			   reg_nm,
+			   mod_nm
+		FROM single_line_view
+		WHERE reg_no = #{memberNo}
+		ORDER BY reg_date
+		LIMIT #{offset}, #{size}
+	</select>
+	
+	<!-- 한줄글 게시물수 조회 -->
+	<select id="getInfoSingleLineCount" resultType="int">
+		SELECT COUNT(*) AS count 
+		FROM single_line
+		WHERE reg_no = #{memberNo}
+	</select>
+		
+		
+	<!-- 한줄글 상세정보 조회(view) -->
+	<select id="getSingleLineViewDetail" resultType="com.pbrk.pbook.entity.SingleLineView">
+		SELECT sngl_line_no,
+			   sngl_line_title,
+			   sngl_line_content,
+			   sngl_line_pub,
+			   group_cd,
+			   code_cd,
+			   reg_no,
+			   reg_date,
+		   	   mod_no,		
+			   mod_date,
+			   sngl_line_pub_nm,
+			   group_nm,
+		   	   code_nm,
+			   reg_nm,
+			   mod_nm
+		FROM single_line_view
+		WHERE sngl_line_no = #{snglLineNo}
+	</select>
+	
+	
+	<!-- 한줄글 수정 -->
+	<update id="getInfoSingleLineUpdate" parameterType="com.pbrk.pbook.entity.SingleLine">
+		UPDATE single_line
+		SET
+			sngl_line_title   = #{sngl_line_title},
+			sngl_line_content = #{sngl_line_content},
+			sngl_line_pub     = #{sngl_line_pub},
+			code_cd           = #{code_cd},
+			mod_no			  = #{mod_no}
+		WHERE sngl_line_no = #{sngl_line_no}
+	</update>
+	
+</mapper>
